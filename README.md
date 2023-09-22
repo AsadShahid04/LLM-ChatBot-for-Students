@@ -88,7 +88,7 @@ Now you can interact with the chat application!
 
 I've created a project in Python. Here it is:
 
-<Paste your project here>
+---Paste your project here---
 
 I want you to convert it to a full-stack app written in Flask and React.
 
