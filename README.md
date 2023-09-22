@@ -87,54 +87,8 @@ Now you can interact with the chat application!
 ## Initial Prompt
 
 I've created a project in Python. Here it is:
-<project>
-import streamlit as st
-import openai
-import os
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
-openai.api_key = os.environ["OPENAI_API_KEY"]
-
-if "model" not in st.session_state:
-    st.session_state["model"] = "gpt-3.5-turbo"
-
-st.title("My Own ChatGPT!")
-
-# initialize messages
-if "messages" not in st.session_state:
-    st.session_state["messages"] = []
-
-# display messages
-for message in st.session_state["messages"]:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
-
-# create an input field
-if user_prompt := st.chat_input("Your prompt"):
-    st.session_state.messages.append({"role": "user", "content": user_prompt})
-    with st.chat_message("user"):
-        st.markdown(user_prompt)
-
-    with st.chat_message("assistant"):
-        message_placeholder = st.empty()
-
-        response = openai.ChatCompletion.create(
-            model=st.session_state.model,
-            messages=[
-                {"role": m["role"], "content": m["content"]}
-                for m in st.session_state.messages
-            ],
-        )
-
-        message_placeholder.markdown(response.choices[0].message.content)
-
-    st.session_state.messages.append(
-        {"role": "assistant", "content": response.choices[0].message.content}
-    )
- </project>
+<Paste your project here>
 
 I want you to convert it to a full-stack app written in Flask and React.
 
