@@ -26,7 +26,11 @@ A full-stack chat application using Flask as the backend, React as the frontend,
 
     Activate the virtual environment:
     ```bash
-    source venv/bin/activate
+    # Windows
+    venv\Scripts\activate
+
+    # MacOS/Linux
+    source venv/bin/activate 
     ```
 
 2. **Install Dependencies**
