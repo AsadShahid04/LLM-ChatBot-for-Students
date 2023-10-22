@@ -17,14 +17,17 @@ messages = []
 @app.route("/message", methods=["POST"])
 def message():
     user_prompt = request.json.get("prompt", "")
-    messages.append({"role": "user", "content": user_prompt})
 
-    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=messages)
+    prompt = input("What image do you want to create-> ")
+    openai.api_key = os.environ['openaikey']
+    response = openai.Image.create(
+        prompt=prompt,
+        n=1,
+        size="1024x1024",
+    )
+    image_url = response['data'][0]['url']
 
-    assistant_message = response.choices[0].message.content
-    messages.append({"role": "assistant", "content": assistant_message})
-
-    return jsonify({"assistant_message": assistant_message})
+    return jsonify({"assistant_message": image_url})
 
 
 if __name__ == "__main__":

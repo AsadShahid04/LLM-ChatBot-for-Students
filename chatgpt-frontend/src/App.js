@@ -26,7 +26,7 @@ function App() {
         <h1>My Own ChatGPT!</h1>
         <div style={{ flex: 1, overflowY: 'auto' }}>
           {messages.map((msg, idx) => (
-            <div key={idx} className={msg.role}>{msg.content}</div>
+            <img key={idx} className={msg.role} src = {msg.content}></img>
           ))}
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
