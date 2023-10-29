@@ -50,12 +50,6 @@ A full-stack chat application using Flask as the backend, React as the frontend,
 
 4. **Run the Server**
 
-    Set Flask environment variables for development:
-    ```bash
-    export FLASK_APP=app.py
-    export FLASK_ENV=development
-    ```
-
     Start the Flask server:
     ```bash
     python app.py
@@ -67,12 +61,12 @@ A full-stack chat application using Flask as the backend, React as the frontend,
 
     Navigate to the frontend directory:
     ```bash
-    cd path_to_frontend_directory
+    cd chatgpt-frontend
     ```
 
     Install the required packages using npm (or Yarn if you prefer):
     ```bash
-    npm install
+    npm i
     ```
 
 2. **Run the React App**
@@ -85,23 +79,3 @@ A full-stack chat application using Flask as the backend, React as the frontend,
 Your browser should automatically open and navigate to `http://localhost:3000/`. If not, you can manually open it.
 
 Now you can interact with the chat application!
-
----
-
-## Initial Prompt
-
-I've created a project in Python. Here it is:
-
----Paste your project here---
-
-I want you to convert it to a full-stack app written in Flask and React.
-
-I want a complete, end-to-end implementation, without any omitted parts. You must include all necessary imports, functions, and configs from the original code.
-
-The original code works correctly, so do not change any functional parts.
-
-The functionality must remain identical, and the GUI must contain the same components.
-
-Provide the step-by-step guide on how to create the converted application including bash commands and the entire code.
-
-I'm using Ubuntu 20.04.
