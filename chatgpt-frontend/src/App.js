@@ -6,19 +6,31 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState('');
 
-  const sendMessage = async () => {
-    const response = await axios.post('http://localhost:5000/message', { prompt: userInput });
+  const createImg = async () => {
+    const response = await axios.post('http://127.0.0.1:5000/img', { prompt: userInput });
     setMessages([...messages, { role: 'user', content: userInput }, { role: 'assistant', content: response.data.assistant_message }]);
     setUserInput('');
   }
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && userInput.trim() !== '') {
-      sendMessage();
+      createImg();
       e.preventDefault();  // To prevent any default behavior, such as a line break in a textarea
     }
   }
-
+  const createTxt = async () =>{
+    const response = await axios.post('http://127.0.0.1:3000/txt', { prompt: userInput });
+    setMessages([...messages, { role: 'user', content: userInput }, { role: 'assistant', content: response.data.assistant_message }]);
+    setUserInput('');
+  }
+  function createTxtForImg(msg, idx){
+    if(msg.role == "user"){
+      return <p className = {msg.role}  key = {idx}>{msg.content}</p>
+    }
+    if(msg.role == "assistant"){
+      return <img className  = {msg.role} key = {idx} src = {msg.content}></img>
+    }
+  }
 
   return (
     <div className="App">
@@ -26,7 +38,7 @@ function App() {
         <h1>My Own ChatGPT!</h1>
         <div style={{ flex: 1, overflowY: 'auto' }}>
           {messages.map((msg, idx) => (
-            <img key={idx} className={msg.role} src = {msg.content}></img>
+            createTxtForImg(msg, idx)
           ))}
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -37,7 +49,7 @@ function App() {
             placeholder="Type your message..."
           />
 
-          <button onClick={sendMessage}>Send</button>
+          <button onClick={createImg}>Send</button>
         </div>
       </div>
     </div>

@@ -46,6 +46,8 @@ h1 {
   background-color: #007BFF;
   color: white;
   align-self: flex-start;
+  width:200px;
+  height:200px;
   /* Keep this to position on the left */
 }
 
