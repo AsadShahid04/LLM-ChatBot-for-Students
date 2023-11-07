@@ -12,28 +12,7 @@ A full-stack chat application using Flask as the backend, React as the frontend,
 
 ### Backend (Flask)
 
-1. **Environment Setup**
-
-    Navigate to the backend directory:
-    ```bash
-    cd path_to_backend_directory
-    ```
-
-    Create a virtual environment:
-    ```bash
-    python3 -m venv venv
-    ```
-
-    Activate the virtual environment:
-    ```bash
-    # Windows
-    venv\Scripts\activate
-
-    # MacOS/Linux
-    source venv/bin/activate 
-    ```
-
-2. **Install Dependencies**
+1. **Install Dependencies**
 
     Install the required packages:
     ```bash
