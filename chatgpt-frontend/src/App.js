@@ -19,15 +19,15 @@ function App() {
     }
   }
   const createTxt = async () =>{
-    const response = await axios.post('http://127.0.0.1:3000/txt', { prompt: userInput });
-    setMessages([...messages, { role: 'user', content: userInput }, { role: 'assistant', content: response.data.assistant_message }]);
+    const response = await axios.post('http://127.0.0.1:5000/txt', { prompt: userInput });
+    setmessages([...txtmessages, { role: 'user', content: userInput }, { role: 'assistant', content: response.data.assistant_message }]);
     setUserInput('');
   }
   function createTxtForImg(msg, idx){
-    if(msg.role == "user"){
+    if(msg.role === "user"){
       return <p className = {msg.role}  key = {idx}>{msg.content}</p>
     }
-    if(msg.role == "assistant"){
+    if(msg.role === "assistant"){
       return <img className  = {msg.role} key = {idx} src = {msg.content}></img>
     }
   }
@@ -35,7 +35,7 @@ function App() {
   return (
     <div className="App">
       <div className="App-header">
-        <h1>My Own ChatGPT!</h1>
+        <h1>img</h1>
         <div style={{ flex: 1, overflowY: 'auto' }}>
           {messages.map((msg, idx) => (
             createTxtForImg(msg, idx)
