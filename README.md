@@ -67,7 +67,7 @@ A full-stack chat application using Flask as the backend, React as the frontend,
    Start the Flask server:
 
    ```bash
-   flask run
+   python app.py
    ```
 
 ### Frontend (React)
