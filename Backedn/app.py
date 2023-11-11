@@ -8,8 +8,7 @@ import requests
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
-
+CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})  # Specify the allowed origin
 
 openai.api_key = os.environ["OPENAI_API_KEY"]
 messages = []
@@ -23,8 +22,16 @@ def img():
         n=1,
         size="1024x1024",
     )
-    image_url = response['data'][0]['url']  
-    return jsonify({"assistant_message": image_url})
+    image_url = response['data'][0]['url']
+
+    # Include CORS headers
+    response_headers = {
+        "Access-Control-Allow-Origin": "http://localhost:3000",  # Allow requests from your frontend
+        "Access-Control-Allow-Headers": "Content-Type",
+    }
+    
+    return jsonify({"assistant_message": image_url}), 200, response_headers
+
 @app.route("/txt", methods=["POST"])
 def message():
     user_prompt = request.json.get("prompt")
@@ -35,8 +42,15 @@ def message():
     assistant_message = response.choices[0].message.content
     messages.append({"role": "assistant", "content": assistant_message})
 
-    return jsonify({"assistant_message": assistant_message})
-@app.route('/tts', methods = ['POST'])
+    # Include CORS headers
+    response_headers = {
+        "Access-Control-Allow-Origin": "http://localhost:3000",  # Allow requests from your frontend
+        "Access-Control-Allow-Headers": "Content-Type",
+    }
+
+    return jsonify({"assistant_message": assistant_message}), 200, response_headers
+
+@app.route('/tts', methods=['POST'])
 def tts():
     global whichOne
     user_prompt = request.json.get('prompt')
@@ -65,4 +79,4 @@ def tts():
                 f.write(chunk)
 
 if __name__ == "__main__":
-    app.run(debug=True, host = "localhost", port = "5000")
+    app.run(debug=True, host="localhost", port=5000)

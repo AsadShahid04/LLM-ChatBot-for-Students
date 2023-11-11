@@ -12,75 +12,87 @@ A full-stack chat application using Flask as the backend, React as the frontend,
 
 ### Backend (Flask)
 
-1. **Environment Setup**
+1. **Environment Setup (OPTIONAL DO NOT NEED)**
 
-    Navigate to the backend directory:
-    ```bash
-    cd path_to_backend_directory
-    ```
+   Navigate to the backend directory:
 
-    Create a virtual environment:
-    ```bash
-    python3 -m venv venv
-    ```
+   ```bash
+   cd path_to_backend_directory
+   ```
 
-    Activate the virtual environment:
-    ```bash
-    # Windows
-    venv\Scripts\activate
+   Create a virtual environment:
 
-    # MacOS/Linux
-    source venv/bin/activate 
-    ```
+   ```bash
+   python3 -m venv venv
+   ```
+
+   Activate the virtual environment:
+
+   ```bash
+   # Windows
+   venv\Scripts\activate
+
+   # MacOS/Linux
+   source venv/bin/activate
+   ```
 
 2. **Install Dependencies**
 
-    Install the required packages:
-    ```bash
-    pip install flask flask-cors python-dotenv openai
-    ```
+   Install the required packages:
+
+   ```bash
+   pip install flask flask-cors python-dotenv openai
+   pip install -r requirements.txt
+   ```
 
 3. **Environment Variables**
 
-    Create a `.env` file in the backend directory with the following content:
-    ```
-    OPENAI_API_KEY=your_openai_api_key
-    ```
-    Replace `your_openai_api_key` with your actual OpenAI API key.
+   Create a `.env` file in the backend directory with the following content:
+
+   ```
+   OPENAI_API_KEY=your_openai_api_key
+   ```
+
+   Replace `your_openai_api_key` with your actual OpenAI API key.
 
 4. **Run the Server**
 
-    Set Flask environment variables for development:
-    ```bash
-    export FLASK_APP=app.py
-    export FLASK_ENV=development
-    ```
+   Set Flask environment variables for development:
 
-    Start the Flask server:
-    ```bash
-    flask run
-    ```
+   ```bash
+   export FLASK_APP=app.py
+   export FLASK_ENV=development
+   ```
+
+   Start the Flask server:
+
+   ```bash
+   flask run
+   ```
 
 ### Frontend (React)
 
 1. **Install Dependencies**
 
-    Navigate to the frontend directory:
-    ```bash
-    cd path_to_frontend_directory
-    ```
+   Navigate to the frontend directory:
 
-    Install the required packages using npm (or Yarn if you prefer):
-    ```bash
-    npm install
-    ```
+   ```bash
+   cd path_to_frontend_directory
+   ```
+
+   Install the required packages using npm (or Yarn if you prefer):
+
+   ```bash
+   npm install
+   ```
 
 2. **Run the React App**
 
-    Start the React development server:
-    ```bash
-    npm start
-    ```
+   Start the React development server:
+
+   ```bash
+   npm start
+   ```
 
 Your browser should automatically open and navigate to `http://localhost:3000/`. If not, you can manually open it.
 
