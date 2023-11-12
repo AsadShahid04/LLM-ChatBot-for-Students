@@ -18,8 +18,6 @@ It will enable students to use the AI Camp website to solve school problems with
 
 Students have a hard time learning and being taught sometimes, causing them to fall behind in grades and schooling. That is why our AI programs can help students learn.
 
-## Proposed Solution
-
 ## Who Has This Problem?
 
 A lot of middle schools and high schools have blocked various AI-learning resources (such as chatGPT, etc.) from their campuses. Although this helps prevent any kind of cheating with these AI resources, it also limits students to being unable to utilize them for educational learning/help.
