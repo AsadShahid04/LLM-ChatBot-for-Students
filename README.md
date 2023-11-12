@@ -1,6 +1,30 @@
-# My Own ChatGPT
+# LLM-Student-Resources
 
-A full-stack chat application using Flask as the backend, React as the frontend, and OpenAI's GPT-3 for conversational capabilities.
+A comprehensive platform integrating AI tools such as ChatGPT, Midjourney, and more, designed to empower students in their academic journey. This project addresses the challenge of students lacking AI-driven resources to aid in learning and improving their academic performance.
+
+## Problem / Opportunity
+
+Students do not have AI tools to help them learn and improve their academics.
+
+This problem signifies that many students face difficulties in their academic journey, whether understanding complex concepts, solving problems, or preparing for exams. The opportunity lies in leveraging AI technology to provide students with educational tools and resources to enhance their learning experience and academic performance. Many children have trouble learning, and AI can act as a replacement if they cannot access services like tutoring or office hours. If we add AI tools to the AI-Camp Website, they can access it from there on a device, and the AI can help them learn without encouraging cheating by telling them how to do it without giving answers directly.
+
+## **What is the goal for this product?**
+
+To provide AI programs (ChatGPT, Midjourney, etc.) to students who could use tools like that in their school to improve themselves academically by giving the means to figure out how to solve problems (while not giving the answer directly, thereby not encouraging cheating)
+
+It will enable students to use the AI Camp website to solve school problems with the help of an AI program.
+
+### **Be specific about how this problem impacts real-world people/businesses.**
+
+Students have a hard time learning and being taught sometimes, causing them to fall behind in grades and schooling. That is why our AI programs can help students learn.
+
+## Proposed Solution
+
+## Who Has This Problem?
+
+A lot of middle schools and high schools have blocked various AI-learning resources (such as chatGPT, etc.) from their campuses. Although this helps prevent any kind of cheating with these AI resources, it also limits students to being unable to utilize them for educational learning/help.
+
+This problem primarily affects students in middle schools and high schools who are looking for additional support and guidance in their studies. It also impacts educators who want to provide innovative learning tools but are concerned about potential cheating. AI Camp will serve as a solution for both students and teachers by offering a controlled environment for AI-powered learning.
 
 ## Prerequisites
 
@@ -41,7 +65,7 @@ A full-stack chat application using Flask as the backend, React as the frontend,
    Install the required packages:
 
    ```bash
-   pip install flask flask-cors python-dotenv openai
+   pip install flask flask-cors python-dotenv openai requests
    pip install -r requirements.txt
    ```
 
@@ -99,21 +123,3 @@ Your browser should automatically open and navigate to `http://localhost:3000/`.
 Now you can interact with the chat application!
 
 ---
-
-## Initial Prompt
-
-I've created a project in Python. Here it is:
-
----Paste your project here---
-
-I want you to convert it to a full-stack app written in Flask and React.
-
-I want a complete, end-to-end implementation, without any omitted parts. You must include all necessary imports, functions, and configs from the original code.
-
-The original code works correctly, so do not change any functional parts.
-
-The functionality must remain identical, and the GUI must contain the same components.
-
-Provide the step-by-step guide on how to create the converted application including bash commands and the entire code.
-
-I'm using Ubuntu 20.04.
