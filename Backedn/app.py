@@ -61,7 +61,7 @@ def tts():
     headers = {
     "Accept": "audio/mpeg",
     "Content-Type": "application/json",
-    "xi-api-key": "0feca70bb146483045a53598987f2559"
+    "xi-api-key": "9aab98f40950f0238521d4e6a0685d93"
     }
 
     data = {
@@ -73,10 +73,14 @@ def tts():
     }
     }
     response = requests.post(url, json=data, headers=headers)
-    with open(f'./chatgpt-frontend/tts/{whichOne}output.mp3', 'wb') as f:
+    whichOne +=1
+    filePath = f'../chatgpt-frontend/public/tts/{whichOne}output.mp3'
+    with open(filePath, 'wb') as f:
         for chunk in response.iter_content(chunk_size=CHUNK_SIZE):
             if chunk:
                 f.write(chunk)
+    return jsonify({'assistant_message':f"/tts/{whichOne}output.mp3"})
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="localhost", port=5000)
