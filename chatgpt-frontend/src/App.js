@@ -9,6 +9,9 @@ function App() {
   const [txtuserInput, settxtUserInput] = useState("");
   const [ttsmessages, setttsMessages] = useState([]);
   const [ttsuserInput, setttsUserInput] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const createImg = async () => {
     const response = await axios.post("http://127.0.0.1:5000/img", {
@@ -79,26 +82,81 @@ function App() {
       );
     }
   }
+  const [showInput, setShowInput] = useState(false);
+
+  const handleLogin = () => {
+    // You can implement your authentication logic here
+    if (username === "asad" && password === "asad") {
+      setLoggedIn(true); // Update loggedIn state to true
+      setShowInput(true); // Show the input field
+    } else {
+      alert("Invalid credentials. Please try again.");
+    }
+  };
+
   return (
     <div className="App">
+      <div className="login-container" style={{ padding: "0 50px" }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          {!showInput ? (
+            <div className="login-form">
+              <h2>Login</h2>
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                style={{ width: "200px" }} // Adjust the width value as needed
+              />
+              <br />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                style={{ width: "200px" }} // Adjust the width value as needed
+              />
+              <br />
+              <button onClick={handleLogin}>Login</button>
+            </div>
+          ) : (
+            <div className="welcome-message">
+              <h2>Welcome, {username}!</h2>
+              <button
+                onClick={() => {
+                  setShowInput(false);
+                  setLoggedIn(false);
+                }}
+              >
+                Logout
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
       <div className="App-header">
-        <h1>img</h1>
+        <h1>Image Generation</h1>
         <div style={{ flex: 1, overflowY: "auto" }}>
           {messages.map((msg, idx) => createTxtForImg(msg, idx))}
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <input
-            value={userInput}
-            onChange={(e) => setUserInput(e.target.value)}
-            onKeyPress={handleKeyPress}
-            placeholder="Type your message..."
-          />
-
-          <button onClick={createImg}>Send</button>
+          {!loggedIn && (
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <input
+                value={userInput}
+                onChange={(e) => setUserInput(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="Type your message..."
+              />
+              <button onClick={createImg}>
+                {setShowInput ? "Send" : "Login to Input!"}
+              </button>{" "}
+            </div>
+          )}
         </div>
       </div>
       <div className="App-header">
-        <h1>txt</h1>
+        <h1>Text Generation</h1>
         <div style={{ flex: 1, overflowY: "auto" }}>
           {txtmessages.map((msg, idx) => (
             <p className={msg.role} key={idx}>
@@ -106,31 +164,51 @@ function App() {
             </p>
           ))}
         </div>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <input
-            value={txtuserInput}
-            onChange={(e) => settxtUserInput(e.target.value)}
-            onKeyPress={handleKeyPress}
-            placeholder="Type your message..."
-          />
-
-          <button onClick={createTxt}>Send</button>
+        <div>
+          {!loggedIn && (
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <input
+                value={txtuserInput}
+                onChange={(e) => settxtUserInput(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="Type your message..."
+              />
+              <button onClick={createTxt}>Send</button>
+            </div>
+          )}
+          {/* <button onClick={() => setShowInput(!showInput)}>
+            {showInput ? "Login to Input!" : "Send"}
+          </button> */}
         </div>
       </div>
       <div className="App-header">
-        <h1>tts</h1>
+        <h1>Text-To-Speech Generation</h1>
         <div style={{ flex: 1, overflowY: "auto" }}>
           {ttsmessages.map((msg, idx) => createTxtForTTS(msg, idx))}
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <input
-            value={ttsuserInput}
-            onChange={(e) => setttsUserInput(e.target.value)}
-            onKeyPress={handleKeyPress}
-            placeholder="Type your message..."
-          />
-
-          <button onClick={createTTS}>Send</button>
+          {!loggedIn && (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <input
+                value={ttsuserInput}
+                onChange={(e) => setttsUserInput(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="Type your message..."
+              />
+              <button onClick={createTTS}>
+                {setShowInput ? "Send" : "Login to Input!"}
+              </button>
+              {""}
+            </div>
+          )}
+          {/* <button onClick={createTTS}>Send</button> */}
         </div>
       </div>
     </div>
