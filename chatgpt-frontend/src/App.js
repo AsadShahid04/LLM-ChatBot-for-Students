@@ -86,7 +86,12 @@ function App() {
 
   const handleLogin = () => {
     // You can implement your authentication logic here
-    if (username === "asad" && password === "asad") {
+    if (
+      // username === process.env.REACT_APP_USERNAME &&
+      // password === process.env.REACT_APP_PASSWORD
+      username == "asad" &&
+      password == "123"
+    ) {
       setLoggedIn(true); // Update loggedIn state to true
       setShowInput(true); // Show the input field
     } else {
@@ -106,7 +111,7 @@ function App() {
                 placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                style={{ width: "200px" }} // Adjust the width value as needed
+                style={{ width: "200px" }}
               />
               <br />
               <input
@@ -126,6 +131,7 @@ function App() {
                 onClick={() => {
                   setShowInput(false);
                   setLoggedIn(false);
+                  //loggedIn = true;
                 }}
               >
                 Logout
@@ -140,9 +146,12 @@ function App() {
           {messages.map((msg, idx) => createTxtForImg(msg, idx))}
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
-          {!loggedIn && (
-            <div style={{ display: "flex", alignItems: "center" }}>
+          {loggedIn && (
+            <div
+              style={{ display: "flex", alignItems: "center", width: "100%" }}
+            >
               <input
+                style={{ width: "100%" }}
                 value={userInput}
                 onChange={(e) => setUserInput(e.target.value)}
                 onKeyPress={handleKeyPress}
@@ -165,9 +174,10 @@ function App() {
           ))}
         </div>
         <div>
-          {!loggedIn && (
+          {loggedIn && (
             <div style={{ display: "flex", alignItems: "center" }}>
               <input
+                style={{ width: "100%" }}
                 value={txtuserInput}
                 onChange={(e) => settxtUserInput(e.target.value)}
                 onKeyPress={handleKeyPress}
@@ -187,7 +197,7 @@ function App() {
           {ttsmessages.map((msg, idx) => createTxtForTTS(msg, idx))}
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
-          {!loggedIn && (
+          {loggedIn && (
             <div
               style={{
                 display: "flex",
@@ -197,6 +207,7 @@ function App() {
               }}
             >
               <input
+                style={{ width: "100%" }}
                 value={ttsuserInput}
                 onChange={(e) => setttsUserInput(e.target.value)}
                 onKeyPress={handleKeyPress}
@@ -205,7 +216,6 @@ function App() {
               <button onClick={createTTS}>
                 {setShowInput ? "Send" : "Login to Input!"}
               </button>
-              {""}
             </div>
           )}
           {/* <button onClick={createTTS}>Send</button> */}
